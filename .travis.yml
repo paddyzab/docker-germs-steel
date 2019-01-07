@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t paddyzab/docker-germs-steel -f Dockerfile.dev .
+
+script:
+  - docker run paddyzab/docker-germs-steel npm run test -- --coverage
