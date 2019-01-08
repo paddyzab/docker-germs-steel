@@ -7,3 +7,13 @@ before_install:
 
 script:
   - docker run paddyzab/docker-germs-steel npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-germs-steel"
+  env: "DockerGermsSteel-env"
+  bucket_name: "elasticbeanstalk-us-west-2-512600641988"
+  bucket_path: "docker-germs-steel"
+  on:
+    branch: master
